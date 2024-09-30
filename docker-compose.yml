@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: autocomplete-ac-api
+    volumes:
+      - .:/var/www
+    ports:
+      - "8000:9000"
+    networks:
+      - autocomplete-ac-network
+
+  nginx:
+    image: nginx:latest
+    container_name: autocomplete-ac-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - autocomplete-ac-network
+
+  db:
+    image: mysql:8.0
+    container_name: autocomplete-ac-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: simple-ac
+      MYSQL_USER: simple-ac
+      MYSQL_PASSWORD: complex-password
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - autocomplete-ac-network
+
+networks:
+  autocomplete-ac-network:
+
+volumes:
+  db_data:
