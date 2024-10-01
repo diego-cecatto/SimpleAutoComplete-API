@@ -13,7 +13,7 @@
 |
 */
 $router->get('/movies', 'MovieController@index');
-$router->get('/movies/search', 'MovieController@search');
+$router->get('/movies/autocomplete', 'MovieController@autocomplete');
 
 $router->get('/', function () use ($router) {
     // return $router->app->version();

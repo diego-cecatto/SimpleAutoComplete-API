@@ -12,7 +12,7 @@
             return response()->json($movies);
         }
 
-        public function search(Request $request)
+        public function autocomplete(Request $request)
         {
             $this->validate($request, [
                 'name' => 'string|max:255',
