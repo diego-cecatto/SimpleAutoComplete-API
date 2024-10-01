@@ -19,3 +19,9 @@ php artisan db:seed
 ```
 docker-compose up
 ```
+
+# Try
+
+```
+curl --location --request GET 'localhost:8080/movies/autocomplete?search=""'
+```
