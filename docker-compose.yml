@@ -28,6 +28,8 @@ services:
 
   db:
     image: mysql:8.0
+    ports:
+      - "${FORWARD_DB_PORT:-3306}:3306"
     container_name: autocomplete-ac-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
