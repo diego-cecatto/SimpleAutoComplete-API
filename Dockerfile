@@ -16,7 +16,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www
 
 COPY . .
-RUN composer install 
+RUN composer install
+RUN chmod -R 775 /var/www/storage
+
 EXPOSE 9000
 
 CMD ["php-fpm"]

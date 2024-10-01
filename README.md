@@ -4,7 +4,7 @@
 
 Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
 
-## Starting
+## First Run
 
 -   docker-compose build
 -   docker-compose up
