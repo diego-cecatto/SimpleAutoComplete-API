@@ -17,7 +17,7 @@ WORKDIR /var/www
 
 COPY . .
 RUN composer install
-RUN chmod -R 775 /var/www/storage
+RUN chown -R www-data:www-data storage
 
 EXPOSE 9000
 
